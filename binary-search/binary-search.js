@@ -1,23 +1,29 @@
-'use strict';
+"use strict";
 
 // Complete this algo
 const binarySearch = (array, target) => {
-	if (!array.length)return false;
-	let splitIndex = Math.floor(array.length/2)
-	let leftHalf = array.slice(0, splitIndex)
-	let rightHalf = array.slice(splitIndex)
-	if(target === array[splitIndex]){return true
-	}else if(target < array[splitIndex]&&splitIndex >0){
-		if(binarySearch(leftHalf, target))return true
-		splitIndex-=2
-		leftHalf = array.slice(0, splitIndex)
-	} else if(target > array[splitIndex]&&splitIndex <array.length-1){
-		if(binarySearch(rightHalf, target))return true
-		splitIndex+=2
-		rightHalf = array.slice(splitIndex)
+  let splitIndex = Math.floor(array.length / 2);
+  let leftHalf = array.slice(0, splitIndex);
+  let rightHalf = array.slice(splitIndex);
+
+  if (!array.length) {
+    return false;
+  } else if (target === array[splitIndex]) {
+    return true;
+  } else if (target < array[splitIndex] && splitIndex > 0) {
+    if (binarySearch(leftHalf, target)) {
+		return true;
 	}
-	//if what index number is equal to target, return true
-	return false
+    splitIndex -= 2;
+    leftHalf = array.slice(0, splitIndex);
+  } else if (target > array[splitIndex] && splitIndex < array.length - 1) {
+    if (binarySearch(rightHalf, target)) {
+		return true;
+	}
+    splitIndex += 2;
+    rightHalf = array.slice(splitIndex);
+  }
+  return false;
 };
 
 /*
@@ -29,4 +35,4 @@ const binarySearch = (array, target) => {
 
 */
 
-module.exports = binarySearch
+module.exports = binarySearch;
